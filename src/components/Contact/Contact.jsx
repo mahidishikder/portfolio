@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub } from 'react
 
 function Contact() {
   return (
-    <div id="contact" className="bg-base-200 py-20">
+    <div id="contact" className="bg-base-200 h-screen py-20">
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
         <h2 className="text-3xl lg:text-4xl font-bold text-center text-[#3B63FB] mb-12">
           Contact Me

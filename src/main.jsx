@@ -12,6 +12,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import ProjectDetails from './components/ProjectDetails/ProjectDetails'
 
 
 
@@ -19,30 +20,36 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
-    children:[
-      {
-        path:'/',
-        element:<Skill></Skill>
-      },
-      {
-        path:'/',
-        element:<About></About>
-      },
-      {
-        path:'/',
-        element:<Footer></Footer>
-      },
-      {
-        path:'/',
-        element : <Project></Project>,
 
-      },
-      {
-        path:'/',
-        element : <Contact></Contact>
-      }
-    ]
+    // children:[
+    //   {
+    //     path:'/',
+    //     element:<Skill></Skill>
+    //   },
+    //   {
+    //     path:'/',
+    //     element:<About></About>
+    //   },
+    //   {
+    //     path:'/',
+    //     element:<Footer></Footer>
+    //   },
+    //   {
+    //     path:'/',
+    //     element : <Project></Project>,
+
+    //   },
+    //   {
+    //     path:'/',
+    //     element : <Contact></Contact>
+    //   }
+    // ]
   },
+  {
+    path:'/project/:id',
+    element:<ProjectDetails></ProjectDetails>
+    
+  }
 ]);
 
 

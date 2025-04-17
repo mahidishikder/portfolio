@@ -17,8 +17,6 @@ function Layout() {
       <Project></Project>
       <Contact></Contact>
       <Footer></Footer>
-      
-      
     </div>
   )
 }
