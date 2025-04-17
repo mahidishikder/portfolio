@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaDownload } from 'react-icons/fa';
+import resume from '../../assets/resume.pdf';
 
 const Navber = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -97,8 +98,8 @@ const Navber = () => {
               key={id}
               href={id}
               onClick={() => handleLinkClick(id)}
-              className={`text-sm font-medium transition duration-300 ${
-                activeLink === id ? 'text-red-500' : 'text-gray-700 hover:text-[#3B63FB]'
+              className={`text-md font-medium transition duration-300 ${
+                activeLink === id ? 'underline-offset-8 underline text-[#3B63FB]' : 'text-gray-700 hover:text-[#3B63FB]'
               }`}
             >
               {id.replace('#', '').charAt(0).toUpperCase() + id.slice(2)}
@@ -108,16 +109,16 @@ const Navber = () => {
 
         {/* Download Button */}
         <div className="hidden lg:flex">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn bg-[#3B63FB] text-white gap-2"
-          >
-            <FaDownload /> Download CV
-          </motion.a>
+        <motion.a
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.95 }}
+  href={resume}
+  download="Mahidi_Shikder_Resume.pdf"
+  className="btn w-full bg-[#3B63FB] text-white mt-2 gap-2"
+>
+  <FaDownload /> Download CV
+</motion.a>
+
         </div>
       </div>
 
@@ -135,7 +136,7 @@ const Navber = () => {
                 href={id}
                 onClick={() => handleLinkClick(id)}
                 className={`block text-base font-medium ${
-                  activeLink === id ? 'text-red-500' : 'text-gray-700 hover:text-[#3B63FB]'
+                  activeLink === id ? 'underline-offset-8 underline text-[#3B63FB]' : 'text-gray-700 hover:text-[#3B63FB]'
                 }`}
               >
                 {id.replace('#', '').charAt(0).toUpperCase() + id.slice(2)}
@@ -143,16 +144,19 @@ const Navber = () => {
             </li>
           ))}
           <li>
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.95 }}
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn w-full bg-[#3B63FB] text-white mt-2 gap-2"
-            >
-              <FaDownload /> Download CV
-            </motion.a>
+          <motion.a
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.95 }}
+  href={resume}
+  download="Mahidi_Shikder_Resume.pdf"
+  className="btn w-full bg-[#3B63FB] text-white mt-2 gap-2"
+>
+  <FaDownload /> Download CV
+</motion.a>
+
+
+
+
           </li>
         </ul>
       </motion.div>

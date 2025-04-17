@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaDownload } from 'react-icons/fa'; // ✅ Import icon
 import { TypeAnimation } from 'react-type-animation';
+import resume from '../../assets/resume.pdf';
 
 const Banner = () => {
   return (
@@ -56,7 +57,7 @@ const Banner = () => {
           />
         </h3>
   
-        <p className="py-4 sm:py-6 text-base sm:text-lg text-gray-600 max-w-md sm:max-w-xl mx-auto lg:mx-0">
+        <p className="py-4 sm:py-6 text-base sm:text-lg text-gray-500 max-w-md sm:max-w-xl mx-auto lg:mx-0">
           I love creating clean, responsive, and user-friendly websites.
           I enjoy solving problems, learning new technologies, and building
           web applications that make life easier. My goal is to create smooth
@@ -70,26 +71,33 @@ const Banner = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Link to="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn bg-[#3B63FB] text-white hover:bg-blue-700 transition-all w-full sm:w-auto"
-            >
-              Hire Me
-            </motion.button>
-          </Link>
+         <motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+  className="btn bg-[#3B63FB] text-white hover:bg-blue-700 transition-all w-full sm:w-auto"
+>
+  Hire Me
+</motion.button>
+
   
           <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline border-[#3B63FB] text-[#3B63FB] hover:bg-[#3B63FB] hover:text-white transition-all w-full sm:w-auto"
-          >
-            <FaDownload className="text-lg" /> Download CV
-          </motion.a>
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  href={resume}
+  download="Mahidi_Shikder_Resume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn btn-outline border-[#3B63FB] text-[#3B63FB] hover:bg-[#3B63FB] hover:text-white transition-all w-full sm:w-auto"
+>
+  <FaDownload className="text-lg" /> Download CV
+</motion.a>
+
         </motion.div>
       </motion.div>
     </div>
