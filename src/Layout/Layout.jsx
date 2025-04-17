@@ -1,5 +1,4 @@
 import React from 'react'
-import { Outlet } from 'react-router'
 import Navber from '../components/Navber/Navber'
 import Banner from '../components/Banner/Banner'
 import About from '../components/About/About'
@@ -19,7 +18,6 @@ function Layout() {
       <Contact></Contact>
       <Footer></Footer>
       
-      {/* <Outlet></Outlet> */}
       
     </div>
   )
