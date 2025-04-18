@@ -14,7 +14,7 @@ function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-[#3B63FB]">About Me</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6 ">About <span className='text-[#3B63FB]'>Me</span></h2>
 
           {/* Step 1: Programming Journey */}
           <p className="text-gray-600 text-lg mb-4">
