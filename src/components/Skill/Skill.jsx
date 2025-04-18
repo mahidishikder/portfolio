@@ -12,7 +12,7 @@ function Skill() {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-10 text-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 text-center overflow-hidden">
         
         {/* Title with Tool Icon */}
         <motion.h2
@@ -53,12 +53,12 @@ function Skill() {
   );
 }
 
-// Skill category wrapper
+// Responsive skill category grid
 const SkillCategory = ({ title, children }) => {
   return (
     <div className="mb-10">
       <h3 className="text-2xl font-semibold text-[#2c3e50] mb-6">{title}</h3>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 justify-items-center w-full">
         {React.Children.map(children, (child, i) =>
           React.cloneElement(child, { index: i })
         )}
@@ -67,25 +67,24 @@ const SkillCategory = ({ title, children }) => {
   );
 }
 
-// Animated Skill Button
+// Clean responsive skill button
 const SkillButton = ({ icon, name, index, color }) => {
   return (
-    <motion.button
-      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}  // Slide from left for even, right for odd buttons
-      whileInView={{ opacity: 1, x: 0 }}  // Slide to center when in view
-      transition={{ duration: 1, delay: index * 0.2 }}
-      whileHover={{
-        scale: 1.1, 
-        backgroundColor: '#ebf4ff',
-        opacity: 1 // Full opacity on hover
-      }}
-      whileTap={{ scale: 0.95 }}
-      className="flex items-center gap-3 px-6 py-3 border border-blue-300 bg-white text-gray-800 font-medium rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-sm"
-      style={{ color: color, borderColor: color, opacity: 0.6 }} // Default opacity set to 0.6 (slightly faded)
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      whileHover={{ scale: 1.05 }}
+      className="w-full flex justify-center"
     >
-      <span className="text-xl">{icon}</span>
-      {name}
-    </motion.button>
+      <button
+        className="flex items-center justify-center gap-2 px-4 py-2 w-full sm:w-36 border border-blue-300 bg-white text-gray-800 font-medium rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-sm"
+        style={{ color: color, borderColor: color }}
+      >
+        <span className="text-xl">{icon}</span>
+        {name}
+      </button>
+    </motion.div>
   );
 }
 
