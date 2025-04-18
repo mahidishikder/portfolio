@@ -1,33 +1,74 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'; // ✅ Correct import
+import { useParams, useNavigate } from 'react-router-dom';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Don't forget to install this
 
 function ProjectDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const projects = [
     {
       id: 1,
-      name: 'Portfolio Website',
-      image: 'https://via.placeholder.com/600x300?text=Portfolio',
+      name: 'ScholGo',
+      images: [
+        "https://i.ibb.co.com/4DK7rbx/Screenshot-2025-04-18-at-3-49-28-PM.png",
+        "https://i.ibb.co.com/tMyLLTxz/Screenshot-2025-04-18-at-3-50-16-PM.png",
+        "https://i.ibb.co.com/yFTJnQVx/Screenshot-2025-04-18-at-3-50-23-PM.png",
+        "https://i.ibb.co.com/BH7Q0QYx/Screenshot-2025-04-18-at-3-50-48-PM.png",
+      ],
       description:
-        'This is a personal portfolio website built using React, Tailwind CSS, and React Router.',
+        'A scholarship management platform for students to search, apply and manage scholarships online.',
+      techStack: 'React, Tailwind CSS, Firebase, React Router, DaisyUI',
+      liveLink: 'https://scholgo.web.app',
+      githubLink: 'https://github.com/yourusername/scholgo-client',
+      challenges:
+        'Integrating Firebase authentication and managing user roles was tricky.',
+      futurePlans:
+        'Add admin analytics, implement email notifications, and support for multiple languages.',
     },
     {
       id: 2,
-      name: 'E-commerce App',
-      image: 'https://via.placeholder.com/600x300?text=E-commerce',
+      name: 'Peddy - Pet Adoption',
+      images: [
+        "https://i.ibb.co.com/spbM4wGY/Screenshot-2025-04-18-at-4-07-38-PM.png",
+        "https://i.ibb.co.com/kszwjCnb/Screenshot-2025-04-18-at-4-07-42-PM.png",
+        "https://i.ibb.co.com/qYPJXzh3/Screenshot-2025-04-18-at-4-08-07-PM.png",
+        "https://i.ibb.co.com/gMV0hJHY/Screenshot-2025-04-18-at-4-08-17-PM.png",
+        "https://i.ibb.co.com/4kX25DM/Screenshot-2025-04-18-at-4-08-32-PM.png"
+      ],
       description:
-        'A full-featured e-commerce platform with product browsing, cart, and secure checkout.',
+        'A website for adopting pets like dogs, cats, and birds. Includes like, modal details, and smooth scroll features.',
+      techStack: 'React, Tailwind CSS, DaisyUI, React Router, Firebase',
+      liveLink: 'https://peddy.web.app',
+      githubLink: 'https://github.com/yourusername/peddy-client',
+      challenges:
+        'Making the modal system responsive and handling like feature globally was challenging.',
+      futurePlans:
+        'Add user review system and real-time chat with pet owners.',
     },
     {
       id: 3,
-      name: 'Blog Platform',
-      image: 'https://via.placeholder.com/600x300?text=Blog',
+      name: 'Lingo Bingo - Language Learning App',
+      images: [
+        "https://i.ibb.co.com/zWy0XYpk/Screenshot-2025-04-18-at-4-11-16-PM.png",
+        "https://i.ibb.co.com/6RHdGYDq/Screenshot-2025-04-18-at-4-12-51-PM.png",
+        "https://i.ibb.co.com/pBDdw0H7/Screenshot-2025-04-18-at-4-13-03-PM.png"
+      ],
       description:
-        'A blog publishing platform where users can create, edit, and view blogs.',
+        'A vocabulary learning app where users can learn words in different languages with Firebase login support.',
+      techStack: 'React, Tailwind, Firebase Auth, React Router',
+      liveLink: 'https://lingobingo.web.app',
+      githubLink: 'https://github.com/yourusername/lingo-bingo-client',
+      challenges:
+        'Managing multiple language data and keeping UI consistent was tricky.',
+      futurePlans:
+        'Add pronunciation audio and leaderboard system for users.',
     },
   ];
+  
 
-  const project = projects.find((p) => p.id === parseInt(id)); // ✅ Convert string to number for matching
+  const project = projects.find((p) => p.id === parseInt(id));
 
   if (!project) {
     return (
@@ -38,14 +79,67 @@ function ProjectDetails() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-4">{project.name}</h2>
-      <img
-        src={project.image}
-        alt={project.name}
-        className="w-full max-w-3xl rounded-xl shadow-lg mb-6"
-      />
-      <p className="text-gray-700 text-lg max-w-3xl">{project.description}</p>
+    <div className="min-h-screen bg-gray-100 p-4 md:p-10">
+      {/* Back Button */}
+      <button
+        onClick={() => navigate(-1)}
+        className="mb-6 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800"
+      >
+        ← Back
+      </button>
+
+      {/* Title */}
+      <h2 className="text-3xl font-bold text-center mb-6">{project.name}</h2>
+
+      {/* Image Carousel */}
+      <div className="max-w-4xl mx-auto mb-6">
+        <Carousel
+          autoPlay
+          infiniteLoop
+          showThumbs={false}
+          showStatus={false}
+          dynamicHeight
+        >
+          {project.images.map((img, index) => (
+            <div key={index}>
+              <img
+                src={img}
+                alt={`Screenshot ${index + 1}`}
+                className="rounded-xl shadow"
+              />
+            </div>
+          ))}
+        </Carousel>
+      </div>
+
+      {/* Project Details */}
+      <div className="bg-white p-6 rounded-lg shadow max-w-4xl mx-auto space-y-4 text-gray-700">
+        <p><span className="font-semibold">Main Tech Stack:</span> {project.techStack}</p>
+        <p><span className="font-semibold">Description:</span> {project.description}</p>
+
+        {/* Buttons */}
+        <div className="flex flex-wrap gap-4 mt-4">
+          <a
+            href={project.liveLink}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            🌐 Live Site
+          </a>
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            💻 GitHub Repo
+          </a>
+        </div>
+
+        <p><span className="font-semibold">Challenges Faced:</span> {project.challenges}</p>
+        <p><span className="font-semibold">Future Plans:</span> {project.futurePlans}</p>
+      </div>
     </div>
   );
 }
