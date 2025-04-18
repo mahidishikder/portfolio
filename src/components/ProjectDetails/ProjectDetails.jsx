@@ -20,8 +20,8 @@ function ProjectDetails() {
       description:
         'A scholarship management platform for students to search, apply and manage scholarships online.',
       techStack: 'React, Tailwind CSS, Firebase, React Router, DaisyUI',
-      liveLink: 'https://scholgo.web.app',
-      githubLink: 'https://github.com/yourusername/scholgo-client',
+      liveLink: 'https://final-cf7ce.firebaseapp.com',
+      githubLink: 'https://github.com/mahidishikder/scholarship-client',
       challenges:
         'Integrating Firebase authentication and managing user roles was tricky.',
       futurePlans:
@@ -29,7 +29,7 @@ function ProjectDetails() {
     },
     {
       id: 2,
-      name: 'Peddy - Pet Adoption',
+      name: 'PathMala',
       images: [
         "https://i.ibb.co.com/spbM4wGY/Screenshot-2025-04-18-at-4-07-38-PM.png",
         "https://i.ibb.co.com/kszwjCnb/Screenshot-2025-04-18-at-4-07-42-PM.png",
@@ -40,8 +40,8 @@ function ProjectDetails() {
       description:
         'A website for adopting pets like dogs, cats, and birds. Includes like, modal details, and smooth scroll features.',
       techStack: 'React, Tailwind CSS, DaisyUI, React Router, Firebase',
-      liveLink: 'https://peddy.web.app',
-      githubLink: 'https://github.com/yourusername/peddy-client',
+      liveLink: 'https://pathmala.web.app',
+      githubLink: 'https://github.com/mahidishikder/pathmala-client',
       challenges:
         'Making the modal system responsive and handling like feature globally was challenging.',
       futurePlans:
@@ -49,7 +49,7 @@ function ProjectDetails() {
     },
     {
       id: 3,
-      name: 'Lingo Bingo - Language Learning App',
+      name: 'NoyaTask',
       images: [
         "https://i.ibb.co.com/zWy0XYpk/Screenshot-2025-04-18-at-4-11-16-PM.png",
         "https://i.ibb.co.com/6RHdGYDq/Screenshot-2025-04-18-at-4-12-51-PM.png",
@@ -58,8 +58,8 @@ function ProjectDetails() {
       description:
         'A vocabulary learning app where users can learn words in different languages with Firebase login support.',
       techStack: 'React, Tailwind, Firebase Auth, React Router',
-      liveLink: 'https://lingobingo.web.app',
-      githubLink: 'https://github.com/yourusername/lingo-bingo-client',
+      liveLink: 'https://todo-4d078.web.app',
+      githubLink: 'https://github.com/mahidishikder/todo',
       challenges:
         'Managing multiple language data and keeping UI consistent was tricky.',
       futurePlans:

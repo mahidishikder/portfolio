@@ -9,9 +9,9 @@ const Project = () => {
       name: 'ScholGo',
       images: [
         "https://i.ibb.co.com/4DK7rbx/Screenshot-2025-04-18-at-3-49-28-PM.png",
-"https://i.ibb.co.com/tMyLLTxz/Screenshot-2025-04-18-at-3-50-16-PM.png",
-"https://i.ibb.co.com/yFTJnQVx/Screenshot-2025-04-18-at-3-50-23-PM.png",
-"https://i.ibb.co.com/BH7Q0QYx/Screenshot-2025-04-18-at-3-50-48-PM.png",
+        "https://i.ibb.co.com/tMyLLTxz/Screenshot-2025-04-18-at-3-50-16-PM.png",
+        "https://i.ibb.co.com/yFTJnQVx/Screenshot-2025-04-18-at-3-50-23-PM.png",
+        "https://i.ibb.co.com/BH7Q0QYx/Screenshot-2025-04-18-at-3-50-48-PM.png",
       ],
       description:
         'This is a personal portfolio website built using React, Tailwind CSS, and React Router.',
@@ -21,10 +21,10 @@ const Project = () => {
       name: 'Pathmala',
       images: [
         "https://i.ibb.co.com/spbM4wGY/Screenshot-2025-04-18-at-4-07-38-PM.png",
-"https://i.ibb.co.com/kszwjCnb/Screenshot-2025-04-18-at-4-07-42-PM.png",
-"https://i.ibb.co.com/qYPJXzh3/Screenshot-2025-04-18-at-4-08-07-PM.png",
-"https://i.ibb.co.com/gMV0hJHY/Screenshot-2025-04-18-at-4-08-17-PM.png",
-"https://i.ibb.co.com/4kX25DM/Screenshot-2025-04-18-at-4-08-32-PM.png"
+        "https://i.ibb.co.com/kszwjCnb/Screenshot-2025-04-18-at-4-07-42-PM.png",
+        "https://i.ibb.co.com/qYPJXzh3/Screenshot-2025-04-18-at-4-08-07-PM.png",
+        "https://i.ibb.co.com/gMV0hJHY/Screenshot-2025-04-18-at-4-08-17-PM.png",
+        "https://i.ibb.co.com/4kX25DM/Screenshot-2025-04-18-at-4-08-32-PM.png"
       ],
       description:
         'A full-featured e-commerce platform with product browsing, cart, and secure checkout.',
@@ -34,8 +34,8 @@ const Project = () => {
       name: 'Task App',
       images: [
         "https://i.ibb.co.com/zWy0XYpk/Screenshot-2025-04-18-at-4-11-16-PM.png",
-"https://i.ibb.co.com/6RHdGYDq/Screenshot-2025-04-18-at-4-12-51-PM.png",
-"https://i.ibb.co.com/pBDdw0H7/Screenshot-2025-04-18-at-4-13-03-PM.png"
+        "https://i.ibb.co.com/6RHdGYDq/Screenshot-2025-04-18-at-4-12-51-PM.png",
+        "https://i.ibb.co.com/pBDdw0H7/Screenshot-2025-04-18-at-4-13-03-PM.png"
       ],
       description:
         'A blog publishing platform where users can create, edit, and view blogs.',
@@ -43,10 +43,21 @@ const Project = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id='projects' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 className='text-4xl font-bold text-center text-[#155CFC] mb-8 mt-12'>
+        Projects
+      </h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+          >
+            <ProjectCard project={project} />
+          </motion.div>
         ))}
       </div>
     </div>
@@ -61,30 +72,29 @@ const ProjectCard = ({ project }) => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 2000); // Change image every 2 seconds
+    }, 3000); // Change image every 3 seconds
 
-    // Cleanup the interval when the component is unmounted
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Cleanup interval
   }, [project.images.length]);
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4">
+    <div className="bg-white shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105">
       <div className="relative">
         <motion.img
-          key={currentImageIndex} // Re-render the image for the transition
+          key={currentImageIndex}
           src={project.images[currentImageIndex]}
           alt={project.name}
-          className="w-full h-48 object-cover rounded-lg mb-4"
+          className="w-full h-48 object-cover rounded-lg mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2, ease: 'easeInOut' }} // Smooth fade-in transition
+          transition={{ duration: 1, ease: 'easeInOut' }}
         />
       </div>
-      <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-      <p className="text-gray-700 mb-4">{project.description}</p>
+      <h3 className="text-2xl font-semibold mb-2 text-center text-[#333]">{project.name}</h3>
+      <p className="text-gray-700 text-center mb-6">{project.description}</p>
       <Link
         to={`/project/${project.id}`}
-        className="text-blue-500 hover:underline"
+        className="block text-center text-blue-600 hover:underline mt-4"
       >
         View Details
       </Link>
