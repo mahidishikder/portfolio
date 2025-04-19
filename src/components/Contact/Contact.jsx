@@ -7,7 +7,7 @@ function Contact() {
   return (
     <motion.div
       id="contact"
-      className="bg-gray-200 py-20"
+      className="bg-gray-200 py-20 overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -28,7 +28,7 @@ function Contact() {
           </h2>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row justify-center items-stretch gap-8">
+        <div className="flex flex-col lg:flex-row justify-self-center gap-8">
           {/* Left: Contact Info Section */}
           <motion.div
             className="flex flex-col justify-between w-full max-w-md bg-white p-8 rounded-xl shadow-lg border-t-4 border-l-4 border-gray-600"
@@ -79,7 +79,7 @@ function Contact() {
             className="flex flex-col justify-between w-full max-w-md bg-white p-8 rounded-xl shadow-lg border-b-4 border-r-4 border-gray-600"
             initial={{ opacity: 0, x: 150 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ type: 'spring', stiffness: 70, duration: 3 }}
+            transition={{ type: 'spring', stiffness: 70, duration: 2 }}
             viewport={{ once: true }}
           >
             <div className="space-y-8 flex-grow">

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 
-
 const Project = () => {
   const projects = [
     {
@@ -44,7 +43,7 @@ const Project = () => {
   ];
 
   return (
-    <div id='projects' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div id='projects' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 overflow-x-hidden">
       <h2 className='text-4xl font-bold text-center text-[#155CFC] mb-8 mt-12'>
         Projects
       </h2>
@@ -72,7 +71,7 @@ const ProjectCard = ({ project, index }) => {
     return () => clearInterval(interval);
   }, [project.images.length]);
 
-  const slideDirection = index % 2 === 0 ? -100 : 100; // Alternate left/right
+  const slideDirection = index % 2 === 0 ? -100 : 100;
 
   return (
     <motion.div
@@ -80,21 +79,25 @@ const ProjectCard = ({ project, index }) => {
       initial={{ opacity: 0, x: slideDirection }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="bg-white shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105"
+      className="bg-white shadow-lg rounded-lg p-4 sm:p-6 hover:shadow-xl transition-transform hover:scale-[1.02] overflow-hidden"
     >
-      <div className="relative">
+      <div className="relative w-full h-48 overflow-hidden rounded-lg">
         <motion.img
           key={currentImageIndex}
           src={project.images[currentImageIndex]}
           alt={project.name}
-          className="w-full h-48 object-cover rounded-lg mb-6"
+          className="w-full h-full object-cover rounded-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         />
       </div>
-      <h3 className="text-2xl font-semibold mb-2 text-center text-[#333]">{project.name}</h3>
-      <p className="text-gray-700 text-center mb-6">{project.description}</p>
+      <h3 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-[#333]">
+        {project.name}
+      </h3>
+      <p className="text-gray-700 text-center text-sm sm:text-base mt-2">
+        {project.description}
+      </p>
       <Link
         to={`/project/${project.id}`}
         className="block text-center text-blue-600 hover:underline mt-4"
