@@ -13,6 +13,7 @@ import resume from '../../assets/resume.pdf';
 const Banner = () => {
   return (
     <section className="hero min-h-screen pt-20 pb-10 px-4 sm:px-6 lg:px-16 bg-base-200 overflow-hidden">
+     
       <div className="max-w-7xl mx-auto">
         <div className="hero-content flex-col-reverse lg:flex-row-reverse gap-10 lg:gap-20 items-center">
 
@@ -80,7 +81,7 @@ const Banner = () => {
               transition={{ duration: 3, delay: 1 }}
             >
               <a
-                href="https://github.com/your-github-username"
+                href="https://github.com/mahidishikder"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -89,7 +90,7 @@ const Banner = () => {
                 <RiGithubFill />
               </a>
               <a
-                href="https://linkedin.com/in/your-linkedin-username"
+                href="https://www.linkedin.com/in/mahidishikder/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -98,7 +99,7 @@ const Banner = () => {
                 <RiLinkedinBoxFill />
               </a>
               <a
-                href="https://facebook.com/your-facebook-username"
+                href="https://www.facebook.com/mahidishikder.dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -107,7 +108,7 @@ const Banner = () => {
                 <RiFacebookBoxFill />
               </a>
               <a
-                href="https://twitter.com/your-twitter-username"
+                href="https://x.com/mahidishikder"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"

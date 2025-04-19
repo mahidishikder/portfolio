@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+
 
 const Project = () => {
   const projects = [
@@ -49,36 +50,38 @@ const Project = () => {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
-          >
-            <ProjectCard project={project} />
-          </motion.div>
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
     </div>
   );
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change image every 3 seconds
-
-    return () => clearInterval(interval); // Cleanup interval
+    }, 3000);
+    return () => clearInterval(interval);
   }, [project.images.length]);
 
+  const slideDirection = index % 2 === 0 ? -100 : 100; // Alternate left/right
+
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: slideDirection }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="bg-white shadow-lg rounded-lg p-6 transition-transform transform hover:scale-105"
+    >
       <div className="relative">
         <motion.img
           key={currentImageIndex}
@@ -87,7 +90,7 @@ const ProjectCard = ({ project }) => {
           className="w-full h-48 object-cover rounded-lg mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: 'easeInOut' }}
+          transition={{ duration: 1 }}
         />
       </div>
       <h3 className="text-2xl font-semibold mb-2 text-center text-[#333]">{project.name}</h3>
@@ -98,7 +101,7 @@ const ProjectCard = ({ project }) => {
       >
         View Details
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Don't forget to install this
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function ProjectDetails() {
   const { id } = useParams();
@@ -19,7 +19,7 @@ function ProjectDetails() {
       ],
       description:
         'A scholarship management platform for students to search, apply and manage scholarships online.',
-      techStack: 'React, Tailwind CSS, Firebase, React Router, DaisyUI',
+      techStack: 'React, Tailwind CSS, Firebase, React Router, DaisyUI, Node Js , express Js, MongoDB',
       liveLink: 'https://final-cf7ce.firebaseapp.com',
       githubLink: 'https://github.com/mahidishikder/scholarship-client',
       challenges:
@@ -57,7 +57,7 @@ function ProjectDetails() {
       ],
       description:
         'A vocabulary learning app where users can learn words in different languages with Firebase login support.',
-      techStack: 'React, Tailwind, Firebase Auth, React Router',
+      techStack: 'React, Tailwind, Firebase Auth, React Router, DaisyUI, Node Js , express Js, MongoDB',
       liveLink: 'https://todo-4d078.web.app',
       githubLink: 'https://github.com/mahidishikder/todo',
       challenges:
@@ -66,7 +66,6 @@ function ProjectDetails() {
         'Add pronunciation audio and leaderboard system for users.',
     },
   ];
-  
 
   const project = projects.find((p) => p.id === parseInt(id));
 
@@ -79,20 +78,20 @@ function ProjectDetails() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-10">
+    <div className="min-h-screen bg-gray-100 px-4 py-6 md:px-10 md:py-10">
       {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
-        className="mb-6 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800"
+        className="mb-6 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800 text-sm md:text-base"
       >
         ← Back
       </button>
 
       {/* Title */}
-      <h2 className="text-3xl font-bold text-center mb-6">{project.name}</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">{project.name}</h2>
 
       {/* Image Carousel */}
-      <div className="max-w-4xl mx-auto mb-6">
+      <div className="max-w-4xl mx-auto mb-6 w-full">
         <Carousel
           autoPlay
           infiniteLoop
@@ -101,11 +100,11 @@ function ProjectDetails() {
           dynamicHeight
         >
           {project.images.map((img, index) => (
-            <div key={index}>
+            <div key={index} className="aspect-video overflow-hidden rounded-xl">
               <img
                 src={img}
                 alt={`Screenshot ${index + 1}`}
-                className="rounded-xl shadow"
+                className="rounded-xl object-cover w-full h-full"
               />
             </div>
           ))}
@@ -113,17 +112,22 @@ function ProjectDetails() {
       </div>
 
       {/* Project Details */}
-      <div className="bg-white p-6 rounded-lg shadow max-w-4xl mx-auto space-y-4 text-gray-700">
-        <p><span className="font-semibold">Main Tech Stack:</span> {project.techStack}</p>
+      <div className="bg-white p-4 md:p-6 rounded-lg shadow max-w-4xl mx-auto space-y-4 text-gray-700 text-sm md:text-base">
+        <p>
+          <span className="font-semibold">Main Tech Stack:</span>
+          <button className="btn btn-sm md:btn-md mx-2 bg-blue-200 text-xs md:text-sm">
+            {project.techStack}
+          </button>
+        </p>
         <p><span className="font-semibold">Description:</span> {project.description}</p>
 
         {/* Buttons */}
-        <div className="flex flex-wrap gap-4 mt-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-4">
           <a
             href={project.liveLink}
             target="_blank"
             rel="noreferrer"
-            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-center"
           >
             🌐 Live Site
           </a>
@@ -131,7 +135,7 @@ function ProjectDetails() {
             href={project.githubLink}
             target="_blank"
             rel="noreferrer"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-center"
           >
             💻 GitHub Repo
           </a>
